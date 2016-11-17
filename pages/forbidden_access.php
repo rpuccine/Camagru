@@ -8,7 +8,7 @@
 <body>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
 	<div>
-		<h1>Camagru</h1>
+		<h1>Sorry, you have to be connected to acess this area.</h1>
 	</div>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
 </body>
