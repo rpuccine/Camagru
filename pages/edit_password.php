@@ -1,30 +1,24 @@
-<?php
-	include($_SERVER['DOCUMENT_ROOT'].'/scripts/tools.php');
-	include($_SERVER['DOCUMENT_ROOT'].'/scripts/auth_protect.php');
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8" />
-	<title>Camagru</title>
-<head>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/scripts/tools.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
 <body>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
-	<div>
+	<div class="container">
 		<form action="validate_edit_password.php" method="post">
-			<div>
-				<label> Old Password : </label>
+			<div class="padSmall">
+				<label> Old Password : <br></label>
 				<input class="inputext" type="text" name="old_pwd">
 			</div>
-			<div>
-				<label> New Password : </label>
+			<div class="padSmall">
+				<label> New Password : <br></label>
 				<input class="inputext" type="text" name="pwd">
 			</div>
-			<div>
-				<lanel> Confirm New password : </label>
+			<div class="padSmall">
+				<lanel> Confirm New password : <br></label>
 				<input class="inputext" type="text" name="cf_pwd">
 			</div>
-			<input type="submit" value="Valider">
+			<div class="padSmall">
+					<input type="submit" value="Valider">
+			</div>
 		</form>
 	</div>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>

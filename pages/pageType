@@ -3,7 +3,7 @@
   <body>
   	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
   		<div class="container">
-      	<h1>Sorry, you have to be connected to acess this area.</h1>
+      <!-----STUFF----->
       </div>
   	</div>
   	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
