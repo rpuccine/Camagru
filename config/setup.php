@@ -13,7 +13,9 @@
 		id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		user_name VARCHAR(30) NOT NULL,
 		password VARCHAR(60) NOT NULL,
-		mail VARCHAR(50) NOT NULL
+		mail VARCHAR(60) NOT NULL,
+		key_val VARCHAR(60) NOT NULL,
+		is_active INT(1) UNSIGNED NOT NULL
 		)";
 
 	try {

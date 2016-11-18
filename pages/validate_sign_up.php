@@ -19,10 +19,19 @@
 			$_POST['pwd'],
 			$_POST['mail']);
 
-		if ($user)
-			$msg = "<p> User created bitch <p>";
-		else
-			$msg = "<p> Error fatale bitch <p>";
+		if ($user) {
+			if ($user->send_verif_mail()) {
+				$msg = "<p> Votre compte a bien ete cree.</p>".
+				"<p>Pour activer celui-ci, verifiez vos mail, un lien d'activation vous a ete envoye.</p>";
+			}
+			else {
+				$msg = "<p> Votre compte a bien ete cree.</p>".
+				"<p>Mais une erreur est survenue dans l'envois du mail d'activation.</p>";
+			}
+		}
+		else {
+			$msg = "<p> Une erreur est survenue. <p>";
+		}
 	}
 ?>
 <!DOCTYPE html>
