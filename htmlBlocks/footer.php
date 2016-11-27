@@ -1,5 +1,5 @@
 <footer>
 	<div>
-		<p>© rpuccine 2016</p>
+		<p>© rpuccine / ajulien 2016</p>
 	</div>
 </footer>
