@@ -34,18 +34,14 @@
 		}
 	}
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8" />
-	<title>Camagru</title>
-<head>
+
+<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
 <body>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
-	<div>
-		<?php echo $msg ?>
+	<div class="container center">
+		<h1><?php echo $msg ?></h1>
 	</div>
-	<div>
+	<div class="container center">
 		<a href="http://localhost:8080/index.php">Retour</a>
 	</div>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>

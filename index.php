@@ -1,13 +1,8 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/scripts/tools.php') ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8" />
-	<title>Camagru</title>
-<head>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
 <body>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
-	<div>
+	<div class="container">
 		<h1>Camagru</h1>
 	</div>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>

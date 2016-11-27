@@ -1,0 +1,113 @@
+body {
+  background-color: white;
+  color: #222222;
+  min-width: 400px;
+  font-family: 'Hammersmith One', sans-serif;
+  margin: 0px !important;
+}
+
+/*------------- Header ------------*/
+
+header {
+  background-color: #333333;
+}
+
+header .container {
+  padding-top: 15px !important;
+  padding-bottom: 0px !important;
+  min-height: 35px;
+}
+
+header .container a {
+  text-decoration: none;
+  color: white;
+}
+header .container label {
+  text-decoration: none;
+  color: white;
+}
+header form{
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+/*------------- Helpers ------------*/
+
+.left {
+  float: left!important;
+}
+
+.right {
+  float: right!important;
+}
+
+.padSmall{
+  padding: 10px;
+}
+.padTop {
+  padding-top: 50px;
+}
+
+.padBot {
+  padding-bottom: 50px;
+}
+
+.center {
+  text-align: center;
+}
+
+/*------------- Media Queries ------------*/
+
+@media screen and (max-width: 768px){
+  .container {
+      width: 100%;
+      padding: 50px 15px;
+  }
+  .cam{
+    width: 100%;
+  }
+  .menu{
+    width: 100%;
+    padding: 50px 0px;
+  }
+  .galeries{
+    width: 100%;
+    padding: 15px 0px;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .container {
+    width: 750px;
+    margin: 0 auto;
+    padding: 100px 0px;
+  }
+  .cam{
+    width: 70%;
+  }
+  .menu{
+    width: 30%;
+    padding: 0px 20px;
+  }
+  .galeries{
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px){
+  .container {
+      width: 970px;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .container {
+      width: 1170px;
+  }
+}
+
+.container {
+  display: block;
+}
+.container div {
+  display: inline-block !important;
+}
