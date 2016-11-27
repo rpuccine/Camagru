@@ -12,7 +12,7 @@
 		$msg = '<div><p>Lien d\'activation erroné.</p></div>';
 	}
 	else if ($user->set_is_active(1)) {
-		$_SESSION['user'] = clone $ret['data'];
+		$_SESSION['user'] = clone $user;
 		$msg = '<div><p>Bravo '.$_SESSION['user']->get_user_name().
 			', ton compte est maintenant Actif !</p>'.
 			'<p> Vole de tes propres ailes !!!</p></div>';
