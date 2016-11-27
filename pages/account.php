@@ -1,5 +1,5 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/scripts/tools.php') ?>
-<?php	include($_SERVER['DOCUMENT_ROOT'].'/scripts/auth_protect.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/scripts/auth_protect.php') ?>
 <?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
 <body>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
