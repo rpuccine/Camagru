@@ -1,11 +1,13 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/scripts/tools.php') ?>
+<!-- Optinnal auth Protect -->
+<!-- PHP Logic Scrip -->
 <?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
-  <body>
-  	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
-  		<div class="container">
-      <!-----STUFF----->
-      </div>
-  	</div>
-  	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
-  </body>
+<body>
+	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
+	<div class="container">
+		<!-- Specific View Stuff -->
+	</div>
+	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
+</body>
 </html>
+
