@@ -3,9 +3,9 @@
 
 	try {
 		$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
-		echo "Connection sucess \n";
+		echo "<p>Connection with DB Established.</p>";
 	} catch(PDOException $e) {
-		echo "Connection fail : ".$e->getMessage();
+		echo "<p>Connection fail : ".$e->getMessage().".</p>";
 	}
 
 	$table_user = "DROP TABLE IF EXISTS User;
@@ -20,8 +20,8 @@
 
 	try {
 		$conn->exec($table_user);
-		echo "table_user created \n";
+		echo "<p>Table User (re)Created.</p>";
 	} catch(PDOException $e) {
-		echo "Error create table_user : ".$e->getMessage();
+		echo "<p>Error create table_user : ".$e->getMessage().".</p>";
 	}
 ?>
