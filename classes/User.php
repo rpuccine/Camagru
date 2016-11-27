@@ -124,7 +124,8 @@ class User {
 
 		$key = array('user_name' => $this->user_name, 'key_val' => $this->key_val);
 		$url = http_build_query($key);
-		$msg = "Suivez ce Lien pour activer votre compte Camagru :\r\n".
+		$msg = "Bonjour ".$this->user_name.",\r\n\r\n".
+			"Suivez ce Lien pour activer votre compte Camagru :\r\n".
 			'http://localhost:8080/pages/account_validation.php?'.$url;
 
 		$headers = 'From: rpuccine@student.42.fr';
