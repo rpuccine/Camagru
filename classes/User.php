@@ -136,6 +136,24 @@ class User {
 		return false;
 	}
 
+	function send_reset_pwd_mail() {
+		$dst = $this->mail;
+		$subject = 'Mot de passe oublié Camagru';
+
+		$key = array('user_name' => $this->user_name, 'key_val' => $this->key_val);
+		$url = http_build_query($key);
+		$msg = "Bonjour ".$this->user_name.",\r\n\r\n".
+			"Suivez ce Lien pour reinitialiser le mot de passe votre compte Camagru :\r\n".
+			'http://localhost:8080/pages/reset_pwd.php?'.$url;
+
+		$headers = 'From: rpuccine@student.42.fr';
+
+		if (mail($dst, $subject, $msg, $headers)) {
+			return true;
+		}
+		return false;
+	}
+
 	static function get_user($user_name) {
 		if (!self::is_user_name_exist($user_name)) {
 			return false;

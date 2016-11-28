@@ -9,4 +9,5 @@
 		<input type="password" name="pwd">
 		<input type="submit" value="Sign-In">
 	</form>
+	<a href="http://localhost:8080/pages/request_reset_pwd.php">Mot de passe oublié ?</a>
 </div>

@@ -1,7 +1,7 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/scripts/tools.php') ?>
 <?php
 	if (!($user = User::get_user($_GET['user_name']))) {
-		$msg = '<div><p>Utilisateur inconnus.</p></div>';
+		$msg = '<div><p>Utilisateur inconnu.</p></div>';
 	}
 	else if ($user->get_is_active()) {
 		header('Location: http://localhost:8080');
@@ -23,7 +23,7 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
 <body>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
-	<div class="container">
+	<div class="container center">
 		<h1><?php echo $msg ?></h1>
 	</div>
 	<div class="container center">

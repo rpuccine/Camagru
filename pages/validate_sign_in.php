@@ -13,7 +13,7 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
 <body>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
-	<div class="container">
+	<div class="container center">
 		<h1><?php echo $msg ?></h1>
 	</div>
 	<div class="container center">
