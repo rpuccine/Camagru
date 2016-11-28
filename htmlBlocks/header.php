@@ -7,7 +7,7 @@
 			<a href="#">Galeries</a>
 		</div>
 		<div style="width:20%;" class="center">
-			<a href="#">Cam</a>
+			<a href="http://localhost:8080/pages/montage.php">Montage</a>
 		</div>
 	<?php
 		if (isset($_SESSION['user'])) {
