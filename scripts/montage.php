@@ -16,6 +16,7 @@
 	$data = base64_decode($data);
 	$file_name = $user->get_user_name().'_'.time().'.png';
 	$src = $_SERVER['DOCUMENT_ROOT'].'/img/'.$file_name;
+	$relative_src = '/img/'.$file_name;
 
 	// Record the img in file system
 	file_put_contents($src, $data);
@@ -26,5 +27,5 @@
 		die;
 	}
 
-	echo "ok !!!!!";
+	echo ($relative_src);
 ?>

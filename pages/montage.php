@@ -9,6 +9,10 @@
 		<button id="startbutton">Prendre une photo</button>
 		<canvas hidden id="canvas"></canvas>
 		<img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
+		<div class="container">
+			<ul id="list_img">
+			</ul>
+		</div>
 	</div>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
 
@@ -78,7 +82,12 @@
 
 	request.onreadystatechange = function() {
 		if (request.readyState == 4 && (request.status == 200 || request.status == 0)) {
-			alert(request.responseText);
+			//alert(request.responseText);
+			var node = document.createElement("LI");
+			var img = document.createElement("IMG");
+			img.src = request.responseText;
+			node.appendChild(img);
+			document.getElementById("list_img").appendChild(node);
 		}
 	}
 
