@@ -55,6 +55,19 @@ class Montage {
 		}
 	}
 
+	static function get_all(){
+		include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
+		try {
+			$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
+			$sql = $conn->query('SELECT * FROM `montage` ORDER BY created_at DESC ');
+			$montages = $sql->fetchAll();
+			return $montages;
+		} catch(PDOException $e) {
+			echo '<p> Error in Montage::get_All() : '.$e->getMessage().'<p>';
+			return false;
+		}
+	}
+
 }
 
 ?>
