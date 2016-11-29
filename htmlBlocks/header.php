@@ -4,10 +4,10 @@
 			<a href="/">Home</a>
 		</div>
 		<div style="width:20%;" class="center">
-			<a href="#">Galeries</a>
+			<a href="/pages/gallery.php">Gallery</a>
 		</div>
 		<div style="width:20%;" class="center">
-			<a href="http://localhost:8080/pages/montage.php">Montage</a>
+			<a href="/pages/montage.php">Montage</a>
 		</div>
 	<?php
 		if (isset($_SESSION['user'])) {

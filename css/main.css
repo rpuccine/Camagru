@@ -9,12 +9,13 @@ body {
 /*------------- Header ------------*/
 
 header {
-  background-color: #333333;
+  background-color: #333333 !important;
 }
 
 header .container {
   padding-top: 15px !important;
   padding-bottom: 0px !important;
+  background-color: #333333 !important;
   min-height: 35px;
 }
 
@@ -54,13 +55,15 @@ header form{
 .center {
   text-align: center;
 }
-
+.bgLight {
+  background-color: #EEEEEE;
+}
 /*------------- Media Queries ------------*/
 
 @media screen and (max-width: 768px){
   .container {
       width: 100%;
-      padding: 50px 15px;
+      padding: 30px 15px;
   }
   .cam{
     width: 100%;
@@ -79,13 +82,14 @@ header form{
   .container {
     width: 750px;
     margin: 0 auto;
-    padding: 100px 0px;
+    padding: 60px 0px;
   }
   .cam{
-    width: 70%;
+    padding-left: 20px;
+    width: 60%;
   }
   .menu{
-    width: 30%;
+    width: 33%;
     padding: 0px 20px;
   }
   .galeries{
@@ -106,8 +110,61 @@ header form{
 }
 
 .container {
+  background-color: #EEEEEE;
   display: block;
 }
 .container div {
   display: inline-block !important;
+}
+.container ul li {
+  width: 320px;
+  height: 240px;
+  margin: 5px;
+  display: inline-block !important;
+}
+.title{
+  /*background-color: #333333;*/
+  width: 80%;
+  border-bottom: solid 3px #333333;
+  /*color: white;*/
+  margin-bottom: 50px;
+}
+.title h2{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.menu{
+  max-height: 320px;
+  overflow-y: scroll;
+}
+.gal{
+  width: 320px;
+  margin: 5px 5px;
+  display: inline-block !important;
+  border: solid 1px white;
+}
+.galImg{
+  height: 240px;
+  width: 320px;
+}
+.galCmts{
+  /*border: solid 1px #333333;*/
+  /*background-color: white;*/
+  height: 120px;
+  width: 300px;
+  overflow-y: scroll;
+}
+.galCmts p {
+  width: 100%;
+  background-color: white;
+  margin: 5px 0;
+}
+.galNewCmt{
+  /*border: solid 1px #333333;*/
+  background-color: white;
+  height: 80px;
+  width: 300px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }

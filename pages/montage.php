@@ -4,15 +4,29 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
 <body>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
-	<div class="container">
-		<video id="video"></video>
-		<button id="startbutton">Prendre une photo</button>
-		<canvas hidden id="canvas"></canvas>
-		<img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-		<div class="container">
-			<ul id="list_img">
-			</ul>
+	<div class="container bgLight center">
+		<div class="center title">
+			<h2>-- CAM --</h2>
 		</div>
+		<div class="cam center">
+			<video id="video"></video>
+			<canvas hidden id="canvas"></canvas>
+		</div>
+		<div class="menu center">
+			<img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
+			<img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
+			<img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
+		</div>
+		<div class="center padSmall" style="width:100%;">
+			<button id="startbutton">Prendre une photo</button>
+		</div>
+	</div>
+	<div class="container bgLight center">
+		<div class="center title">
+			<h2>-- LAST PIC --</h2>
+		</div>
+		<ul class="padSmall center" id="list_img">
+		</ul>
 	</div>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
 
@@ -72,7 +86,7 @@
     photo.setAttribute('src', data);
 
 	var request = new XMLHttpRequest();
-	var url = "http://localhost:8080/scripts/montage.php";
+	var url = "/scripts/montage.php";
 	var login = '<?php echo $_SESSION['user']->get_user_name() ?>';
 	var params = "src_poney=" + encodeURIComponent(data)
 		+ "&login=" + encodeURIComponent(login);
@@ -105,4 +119,3 @@
 
 </body>
 </html>
-
