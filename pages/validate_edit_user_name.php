@@ -25,7 +25,7 @@
 		<h1><?php echo $msg ?></h1>
 	</div>
 	<div class="container center">
-		<a href="http://localhost:8080/index.php">Retour</a>
+		<a href="/index.php">Retour</a>
 	</div>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
 </body>
