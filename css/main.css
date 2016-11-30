@@ -23,6 +23,12 @@ header .container a {
   text-decoration: none;
   color: white;
 }
+
+header .container a:hover {
+
+  color: red;
+}
+
 header .container label {
   text-decoration: none;
   color: white;
@@ -32,6 +38,14 @@ header form{
   margin-bottom: 15px;
 }
 /*------------- Helpers ------------*/
+
+.clear {
+  clear: both;
+}
+
+.autofill {
+  overflow: auto;
+}
 
 .left {
   float: left!important;
@@ -89,8 +103,8 @@ header form{
     width: 60%;
   }
   .menu{
-    width: 33%;
-    padding: 0px 20px;
+    /*width: 33%;*/
+    /*padding: 0px 20px;*/
   }
   .galeries{
     width: 50%;
@@ -115,6 +129,8 @@ header form{
 }
 .container div {
   display: inline-block !important;
+  vertical-align: top;
+  /*border: 2px solid red;*/
 }
 .container ul li {
   width: 320px;
@@ -133,16 +149,40 @@ header form{
   padding: 0 !important;
   margin: 0 !important;
 }
+
+/*------------- Montage ------------*/
+
 .menu{
-  max-height: 320px;
+  max-height: 780px;
   overflow-y: scroll;
 }
+
+.montage_main {
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+
+/*#main {
+  float: left;
+  width: 49%;
+}
+
+#side {
+  float: left;
+  width: 49%;
+}*/
+
+/*------------- Galerie ------------*/
+
 .gal{
   width: 320px;
   margin: 5px 5px;
   display: inline-block !important;
   border: solid 1px white;
 }
+
+
 .galImg{
   height: 240px;
   width: 320px;

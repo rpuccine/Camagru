@@ -4,38 +4,42 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
 <body>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
-	<div class="container bgLight center">
-		<div class="center title">
-			<h2>-- CAM --</h2>
+	<div class="container bgLight center autofill">
+		<div class="montage_main" id="main">
+			<div class="center title">
+				<h2>-- CAM --</h2>
+			</div>
+			<div class="cam center">
+				<video id="video"></video>
+			</div>
+			<form enctype="multipart/form-data" method="post" id="montage_form">
+				<input type="file" name="file">
+				<br>
+				<img src='/calc/beard_01.png'>
+				<input type="radio" name="calc" value="/calc/beard_01.png" required>
+				<img src='/calc/beard_02.png'>
+				<input type="radio" name="calc" value="/calc/beard_02.png" required>
+				<img src='/calc/beard_03.png'>
+				<input type="radio" name="calc" value="/calc/beard_03.png" required>
+				<br>
+				<input type="submit" value="Take Picture">
+			</form>
 		</div>
-		<div class="cam center">
-			<video id="video"></video>
-			<canvas hidden id="canvas"></canvas>
-		</div>
-		<form enctype="multipart/form-data" method="post" id="montage_form">
-			<input type="file" name="file">
-			<br>
-			<img src='/calc/beard_01.png'>
-			<input type="radio" name="calc" value="/calc/beard_01.png" required>
-			<img src='/calc/beard_02.png'>
-			<input type="radio" name="calc" value="/calc/beard_02.png" required>
-			<img src='/calc/beard_03.png'>
-			<input type="radio" name="calc" value="/calc/beard_03.png" required>
-			<br>
-			<input type="submit" value="Take Picture">
-		</form>
-		<div class="menu center">
-			<ul class="padSmall center" id="list_img">
-			</ul>
+		<div class="montage_main" id="side">
+			<div class="center title">
+				<h2>-- LAST PIC --</h2>
+			</div>
+			<div class="menu center">
+				<ul class="padSmall center" id="list_img">
+				</ul>
+			</div>
 		</div>
 	</div>
-	<div class="container bgLight center">
-		<div class="center title">
-			<h2>-- LAST PIC --</h2>
-		</div>
-		<img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-	</div>
+	<div class="clear"/>
+	<canvas hidden id="canvas"></canvas>
+	<img hidden src="http://placekitten.com/g/320/261" id="photo" alt="photo">
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
+
 
 <script type="text/javascript">
 
@@ -48,6 +52,7 @@
       photo        = document.querySelector('#photo'),
       startbutton  = document.querySelector('#startbutton'),
 			form         = document.querySelector('#montage_form'),
+			list         = document.querySelector('#list_img'),
       width = 320,
       height = 0;
 
@@ -110,7 +115,7 @@
 				img.src = request.responseText;
 				photo.setAttribute('src', request.responseText);
 				node.appendChild(img);
-				document.getElementById("list_img").appendChild(node);
+				list.insertBefore(node, list.childNodes[0]);
 				form.reset();
 			}
 		}
