@@ -1,9 +1,15 @@
-<div style="width:39%" class="center">
+<div style="width:32%;" class="center">
+	<a href="/">Home</a>
+</div>
+<div style="width:32%;" class="center">
+	<a href="/pages/gallery.php">Gallery</a>
+</div>
+<div style="width:32%" class="center">
 	<a href="/pages/sign_up.php">Sign-up</a>
 </div>
 <div style="width:100%" class="center">
 	<form action="/pages/validate_sign_in.php" method="post">
-		<label> Identifiant : </label>
+		<label> Login : </label>
 		<input type="text" name="login">
 		<label> Password : </label>
 		<input type="password" name="pwd">

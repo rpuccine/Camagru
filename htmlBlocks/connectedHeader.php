@@ -1,6 +1,15 @@
-<div style="width:20%" class="center">
-	<a href="/pages/account.php"><?php echo $_SESSION['user']->get_user_name() ?></a>
+<div style="width:24%;" class="center">
+	<a href="/">Home</a>
 </div>
-<div style="width:19%" class="center">
+<div style="width:24%;" class="center">
+	<a href="/pages/gallery.php">Gallery</a>
+</div>
+<div style="width:24%;" class="center">
+	<a href="/pages/montage.php">Montage</a>
+</div>
+<div style="width:24%" class="center">
+	<a href="/pages/account.php">Compte</a>
+</div>
+<div style="width:100%" class="center">
 	<a href="/pages/sign_out.php">Sign-out</a>
 </div>
