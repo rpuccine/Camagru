@@ -1,7 +1,6 @@
 <div class="gal center">
   <div class="galImg">
-    <img src=<?php echo($montage['src']) ?> alt="">
-
+    <img src=<?php echo($montage->get_src()) ?> alt="">
   </div>
   <div class="galCmts">
       <p>

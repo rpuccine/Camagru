@@ -6,7 +6,7 @@ class Montage {
 	protected $created_at;
 	protected $src;
 
-	function User($id, $user_id, $created_at, $src) {
+	function Montage($id, $user_id, $created_at, $src) {
 		$this->id = $id;
 		$this->user_id = $user_id;
 		$this->created_at = $created_at;
@@ -51,6 +51,48 @@ class Montage {
 			return $montage;
 		} catch(PDOException $e) {
 			echo '<p> Error in Montage::create() : '.$e->getMessage().'<p>';
+			return false;
+		}
+	}
+
+	static function get_nb_montage() {
+		include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
+		try {
+			$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
+			$sql = $conn->prepare('SELECT COUNT(*)
+				FROM Montage');
+			$sql->execute();
+			$return = $sql->fetchColumn();
+			$conn = NULL;
+			return $return;
+		} catch(PDOException $e) {
+			echo '<p> Error in Montage::get_nb_montage() : '.$e->getMessage().'<p>';
+			return 0;
+		}
+	}
+
+	static function get_montage_paginated($limit, $offset) {
+		include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
+		try {
+			$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
+			$sql = $conn->prepare('SELECT *
+				FROM Montage
+				ORDER BY created_at DESC
+				LIMIT :limit
+				OFFSET :offset
+				');
+			$sql->bindValue(':limit', $limit, PDO::PARAM_INT);
+			$sql->bindValue(':offset', $offset, PDO::PARAM_INT);
+			$sql->execute();
+			$montages = array();
+			while (($row = $sql->fetch(PDO::FETCH_NUM))) {
+				$montages[] = new Montage($row[0], $row[1], $row[2], $row[3]);
+			}
+			$conn = NULL;
+			return $montages;
+		} catch(PDOException $e) {
+			echo '<p> Error in Montage::get_montage_paginated : '
+				.$e->getMessage().'<p>';
 			return false;
 		}
 	}
