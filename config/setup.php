@@ -43,3 +43,5 @@
 		echo "<p>Error create table_user : ".$e->getMessage().".</p>";
 	}
 ?>
+
+<a href="/index.php">Retour</a>
