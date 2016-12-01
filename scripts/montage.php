@@ -28,7 +28,6 @@
 
 	// Use the cam picture or uploaded file
 	if ($_FILES['file']['error'] == 0) {
-		//$path = $_SERVER['DOCUMENT_ROOT'].'/img/'.$_FILES['file']['name'];
 		copy($_FILES['file']['tmp_name'], $dst_file_system);
 	}
 	else {
@@ -36,14 +35,6 @@
 		$data = base64_decode($data);
 		file_put_contents($dst_file_system, $data);
 	}
-
-	// Get the dst img data
-	/*list(, $data) = explode(',', $_POST['src_poney']);
-	$data = base64_decode($data);
-	$file_name = $user->get_user_name().'_'.time().'.png';
-	$dst = '/img/'.$file_name;
-	$dst_file_system = $_SERVER['DOCUMENT_ROOT'].'/img/'.$file_name;
-	file_put_contents($dst_file_system, $data);*/
 
 	// Get the calc src img data
 	$src = $_SERVER['DOCUMENT_ROOT'].$_POST['calc'];

@@ -9,17 +9,18 @@
 			<div class="center title">
 				<h2>-- CAM --</h2>
 			</div>
-			<div class="cam center">
+			<div id="cam" class="cam center">
 				<video id="video"></video>
+				<img id="preview" src="">
 			</div>
 			<form enctype="multipart/form-data" method="post" id="montage_form">
 				<input type="file" name="file">
 				<br>
-				<img src='/calc/beard_01.png'>
+				<img id="calc_1" src='/calc/beard_01.png'>
 				<input type="radio" name="calc" value="/calc/beard_01.png" required>
-				<img src='/calc/beard_02.png'>
+				<img id="calc_2" src='/calc/beard_02.png'>
 				<input type="radio" name="calc" value="/calc/beard_02.png" required>
-				<img src='/calc/beard_03.png'>
+				<img id="calc_3" src='/calc/beard_03.png'>
 				<input type="radio" name="calc" value="/calc/beard_03.png" required>
 				<br>
 				<input type="submit" value="Take Picture">
@@ -53,6 +54,11 @@
       startbutton  = document.querySelector('#startbutton'),
 			form         = document.querySelector('#montage_form'),
 			list         = document.querySelector('#list_img'),
+			preview      = document.querySelector('#preview'),
+			calc_1	     = document.querySelector('#calc_1'),
+			calc_2       = document.querySelector('#calc_2'),
+			calc_3       = document.querySelector('#calc_3'),
+			calc         = form.elements['calc'],
       width = 320,
       height = 0;
 
@@ -91,6 +97,44 @@
     }
   }, false);
 
+	for (var i = 0; i < calc.length; i++) {
+		calc[i].addEventListener('click', function(ev){
+			var vid_w = 320;
+			var vid_h = 240;
+			preview.src = this.value;
+			//console.log("get_h :" + get_h(vid_h, i));
+			//console.log("get_w :" + get_w(vid_w, i));
+			preview.style.top = get_h(vid_h, this.value) + 'px';
+			preview.style.left = get_w(vid_w, this.value) + 'px';
+	  }, false);
+	}
+
+	function get_h(vid_h, val) {
+		console.log(val);
+		if (val == "/calc/beard_01.png") {
+			return ((vid_h / 2) - (82 / 2));
+		}
+		else if (val == "/calc/beard_02.png") {
+			return (vid_h / 2 - 99 / 2);
+		}
+		else {
+			return (vid_h / 2 - 198 / 2);
+		}
+	}
+
+	function get_w(vid_w, val) {
+		console.log(val);
+		if (val == "/calc/beard_01.png") {
+			return ((vid_w / 2) - (100/ 2));
+		}
+		else if (val == "/calc/beard_02.png") {
+			return (vid_w / 2 - 100 / 2);
+		}
+		else {
+			return (vid_w / 2 - 200 / 2);
+		}
+	}
+
 	function takepicture() {
     canvas.width = width;
     canvas.height = height;
@@ -117,6 +161,7 @@
 				node.appendChild(img);
 				list.insertBefore(node, list.childNodes[0]);
 				form.reset();
+				preview.src = "";
 			}
 		}
 

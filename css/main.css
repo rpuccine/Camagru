@@ -130,7 +130,7 @@ header form{
 .container div {
   display: inline-block !important;
   vertical-align: top;
-  /*border: 2px solid red;*/
+  border: 2px solid red;
 }
 .container ul li {
   width: 320px;
@@ -163,17 +163,33 @@ header form{
   width: 49%;
 }
 
-/*#main {
-  float: left;
-  width: 49%;
+#cam {
+  position: relative;
+  height: 240px;
 }
 
-#side {
-  float: left;
-  width: 49%;
-}*/
+#video {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+#preview {
+  position: absolute;
+  z-index: 2;
+}
 
 /*------------- Galerie ------------*/
+
+.page a {
+  text-decoration: none;
+  color: green;
+}
+
+.current {
+  color: purple !important;
+}
 
 .gal{
   width: 320px;
