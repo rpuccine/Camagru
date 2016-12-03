@@ -136,6 +136,18 @@ class User {
 		return false;
 	}
 
+	function send_comment_notif_mail() {
+		$dst = $this->mail;
+		$subject = 'Nouveau commentaire Camagu';
+		$msg = "Bonjour ".$this->user_name.",\r\n\r\n".
+			"Un de vos montage Camagru a reçu un nouveau commentaire !\r\n";
+		$headers = 'From: rpuccine@student.42.fr';
+		if (mail($dst, $subject, $msg, $headers)) {
+			return true;
+		}
+		return false;
+	}
+
 	function send_reset_pwd_mail() {
 		$dst = $this->mail;
 		$subject = 'Mot de passe oublié Camagru';
@@ -167,7 +179,7 @@ class User {
 			$sql->execute();
 			$montages = array();
 			while (($row = $sql->fetch(PDO::FETCH_NUM))) {
-				$montages[] = new Montage($row[0], $row[1], $row[2], $row[3]);
+				$montages[] = new Montage($row[0], $row[1], $row[2], $row[3], $row[4]);
 			}
 			$conn = NULL;
 			return $montages;
@@ -192,9 +204,30 @@ class User {
 			$sql->execute();
 			$row = $sql->fetch(PDO::FETCH_NUM);
 			$user = new User($row[0], $row[1], $row[2], $row[3], $row[4], $row[5]);
+			$conn = NULL;
 			return $user;
 		} catch(PDOException $e) {
 			echo '<p> Error in User::get_user() : '.$e->getMessage().'<p>';
+			return false;
+		}
+	}
+
+	static function get_user_by_id($id) {
+		include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
+		try {
+			$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
+			$sql = $conn->prepare('SELECT *
+					FROM User
+					WHERE id = :id');
+			$sql->bindValue(':id', $id, PDO::PARAM_INT);
+			$sql->execute();
+			$row = $sql->fetch(PDO::FETCH_NUM);
+			$user = new User($row[0], $row[1], $row[2], $row[3], $row[4], $row[5]);
+			$conn = NULL;
+			return $user;
+		} catch(PDOException $e) {
+			echo '<p> Error in User::get_user_by_id() : '
+				.$e->getMessage().'<p>';
 			return false;
 		}
 	}

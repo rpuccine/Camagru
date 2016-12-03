@@ -5,12 +5,14 @@ class Montage {
 	protected $user_id;
 	protected $created_at;
 	protected $src;
+	protected $likes;
 
-	function Montage($id, $user_id, $created_at, $src) {
+	function Montage($id, $user_id, $created_at, $src, $likes) {
 		$this->id = $id;
 		$this->user_id = $user_id;
 		$this->created_at = $created_at;
 		$this->src = $src;
+		$this->likes = $likes;
 	}
 
 	function get_id() {
@@ -29,13 +31,36 @@ class Montage {
 		return $this->src;
 	}
 
+	function get_likes() {
+		return $this->likes;
+	}
+
+	function like() {
+		include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
+		try {
+			$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
+			$sql = $conn->prepare('UPDATE Montage
+				SET likes = :likes
+				WHERE id = :id');
+			$sql->bindValue(':likes', $this->likes + 1, PDO::PARAM_INT);
+			$sql->bindValue(':id', $this->id, PDO::PARAM_INT);
+			$sql->execute();
+			$conn = NULL;
+			$this->likes = $this->likes + 1;
+			return true;
+		} catch(PDOException $e) {
+			echo '<p> Error in Montage->like() : '.$e->getMessage().'<p>';
+			return false;
+		}
+	}
+
 	static function create($user_id, $src) {
 		include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
 		$created_at = date("Y-m-d H:i:s");
 		try {
 			$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
 			$sql = $conn->prepare('INSERT INTO Montage
-				VALUES (NULL, :user_id, :created_at, :src)');
+				VALUES (NULL, :user_id, :created_at, :src, 0)');
 			$sql->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 			$sql->bindValue(':created_at', $created_at, PDO::PARAM_STR);
 			$sql->bindValue(':src', $src, PDO::PARAM_STR);
@@ -47,7 +72,8 @@ class Montage {
 			$sql->bindValue(':src', $src, PDO::PARAM_STR);
 			$sql->execute();
 			$row = $sql->fetch(PDO::FETCH_NUM);
-			$montage = new Montage($row[0], $row[1], $row[2], $row[3]);
+			$montage = new Montage($row[0], $row[1], $row[2], $row[3], $row[4]);
+			$conn = NULL;
 			return $montage;
 		} catch(PDOException $e) {
 			echo '<p> Error in Montage::create() : '.$e->getMessage().'<p>';
@@ -86,7 +112,7 @@ class Montage {
 			$sql->execute();
 			$montages = array();
 			while (($row = $sql->fetch(PDO::FETCH_NUM))) {
-				$montages[] = new Montage($row[0], $row[1], $row[2], $row[3]);
+				$montages[] = new Montage($row[0], $row[1], $row[2], $row[3], $row[4]);
 			}
 			$conn = NULL;
 			return $montages;
@@ -113,6 +139,29 @@ class Montage {
 			return $return;
 		} catch(PDOException $e) {
 			echo '<p> Error in Montage::is_montage_exist() : '
+				.$e->getMessage().'<p>';
+			return false;
+		}
+	}
+
+	static function get_montage($id) {
+		if (!self::is_montage_exist($id)) {
+			return false;
+		}
+		include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
+		try {
+			$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
+			$sql = $conn->prepare('SELECT *
+					FROM Montage
+					WHERE id = :id');
+			$sql->bindValue(':id', $id, PDO::PARAM_INT);
+			$sql->execute();
+			$row = $sql->fetch(PDO::FETCH_NUM);
+			$montage = new Montage($row[0], $row[1], $row[2], $row[3], $row[4]);
+			$conn = NULL;
+			return $montage;
+		} catch(PDOException $e) {
+			echo '<p> Error in Montage::get_montage() : '
 				.$e->getMessage().'<p>';
 			return false;
 		}

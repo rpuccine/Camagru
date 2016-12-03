@@ -9,6 +9,7 @@
 	}
 
 	$table_user = "
+		DROP TABLE IF EXISTS Comment;
 		DROP TABLE IF EXISTS Montage;
 		DROP TABLE IF EXISTS User;
 		CREATE TABLE User (
@@ -32,9 +33,19 @@
 			user_id INT(6) UNSIGNED NOT NULL,
 			created_at DATETIME NOT NULL,
 			src VARCHAR(60) NOT NULL,
+			likes INT(6) UNSIGNED NOT NULL,
 			FOREIGN KEY (user_id) REFERENCES User(id)
 				ON DELETE CASCADE ON UPDATE CASCADE
-		);";
+		);
+		CREATE TABLE Comment (
+			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+			montage_id INT(6) UNSIGNED NOT NULL,
+			created_at DATETIME NOT NULL,
+			content TEXT NOT NULL,
+			FOREIGN KEY (montage_id) REFERENCES Montage(id)
+				ON DELETE CASCADE ON UPDATE CASCADE
+		);
+		";
 
 	try {
 		$conn->exec($table_user);

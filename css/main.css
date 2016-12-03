@@ -198,6 +198,9 @@ header form{
   border: solid 1px white;
 }
 
+.gal div {
+  padding-bottom: 10px;
+}
 
 .galImg{
   height: 240px;
@@ -206,7 +209,6 @@ header form{
 .galCmts{
   /*border: solid 1px #333333;*/
   /*background-color: white;*/
-  height: 120px;
   width: 300px;
   overflow-y: scroll;
 }
@@ -223,4 +225,5 @@ header form{
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
