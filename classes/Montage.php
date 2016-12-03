@@ -97,15 +97,41 @@ class Montage {
 		}
 	}
 
-	static function get_all(){
+	static function is_montage_exist($id) {
 		include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
 		try {
 			$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
-			$sql = $conn->query('SELECT * FROM `montage` ORDER BY created_at DESC ');
-			$montages = $sql->fetchAll();
-			return $montages;
+			$sql = $conn->prepare('SELECT COUNT(*)
+				FROM Montage
+				WHERE id = :id');
+			$sql->bindValue(':id', $id, PDO::PARAM_INT);
+			$sql->execute();
+			$return = false;
+			if ($sql->fetchColumn() > 0)
+				$return = true;
+			$conn = NULL;
+			return $return;
 		} catch(PDOException $e) {
-			echo '<p> Error in Montage::get_All() : '.$e->getMessage().'<p>';
+			echo '<p> Error in Montage::is_montage_exist() : '
+				.$e->getMessage().'<p>';
+			return false;
+		}
+	}
+
+	static function del_montage($id) {
+		include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
+		try {
+			$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
+			$sql = $conn->prepare('DELETE
+				FROM Montage
+				WHERE id = :id');
+			$sql->bindValue(':id', $id, PDO::PARAM_INT);
+			$sql->execute();
+			$conn = NULL;
+			return true;
+		} catch(PDOException $e) {
+			echo '<p> Error in Montage::del_montage() : '
+				.$e->getMessage().'<p>';
 			return false;
 		}
 	}

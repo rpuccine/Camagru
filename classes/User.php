@@ -154,6 +154,30 @@ class User {
 		return false;
 	}
 
+	function get_montages() {
+		include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
+		try {
+			$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
+			$sql = $conn->prepare('SELECT *
+				FROM Montage
+				WHERE user_id = :user_id
+				ORDER BY created_at DESC
+				');
+			$sql->bindValue(':user_id', $this->id, PDO::PARAM_INT);
+			$sql->execute();
+			$montages = array();
+			while (($row = $sql->fetch(PDO::FETCH_NUM))) {
+				$montages[] = new Montage($row[0], $row[1], $row[2], $row[3]);
+			}
+			$conn = NULL;
+			return $montages;
+		} catch(PDOException $e) {
+			echo '<p> Error in User->get_montages : '
+				.$e->getMessage().'<p>';
+			return false;
+		}
+	}
+
 	static function get_user($user_name) {
 		if (!self::is_user_name_exist($user_name)) {
 			return false;
