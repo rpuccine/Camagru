@@ -1,4 +1,5 @@
 <?php
+	mkdir($_SERVER['DOCUMENT_ROOT']."/img");
 	include("database.php");
 
 	try {
