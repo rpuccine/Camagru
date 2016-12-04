@@ -28,6 +28,10 @@
 
 	// Use the cam picture or uploaded file
 	if ($_FILES['file']['error'] == 0) {
+		if ($_FILES['file']['size'] > 2097152 || $_FILES['file']['type'] != 'image/png'){
+			echo "Image must be less than 2mo and be off type png";
+			die;
+		}
 		copy($_FILES['file']['tmp_name'], $dst_file_system);
 	}
 	else {

@@ -6,6 +6,9 @@
 		$msg = '<div><p>Utilisateur inconnu.</p></div>';
 	}
 	// Verif PWD
+	else if (!preg_match('@[0-9]@', $_POST['pwd']) || strlen($_POST['pwd']) >= 8) {
+		$msg = "<p> Le mot de passe doit contenir au moins 8 characteres et un chiffre <p>";
+	}
 	else if ($_POST['pwd'] !== $_POST['cf_pwd']) {
 		$msg = "<p> Veuillez verifier l'unicite du password <p>";
 	}
@@ -27,4 +30,3 @@
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
 </body>
 </html>
-
