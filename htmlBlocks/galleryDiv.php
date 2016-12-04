@@ -13,15 +13,13 @@
       value="<?php echo ($montage->get_id()) ?>">
       <input type="submit" value="like">
   </form>
-  <div class="galCmts">
-    <ul id="list_comment_<?php echo($montage->get_id()); ?>">
-      <?php foreach ($comments as $comment ) { ?>
-        <li><?php echo ($comment->get_content()) ?></li>
-      <?php } ?>
-    </ul>
+  <div class="galCmts" id="list_comment_<?php echo($montage->get_id()); ?>">
+    <?php foreach ($comments as $comment ) { ?>
+      <p><?php echo ($comment->get_content()) ?></p>
+    <?php } ?>
   </div>
   <div>
-    <form class="form_comment" method="post">
+    <form class="form_comment" method="post" id="postCmt<?php echo ($montage->get_user_id()) ?>">
       <input type="hidden" name="montage_id"
         value="<?php echo ($montage->get_id()) ?>">
       <input type="hidden" name="user_id"

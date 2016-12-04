@@ -95,7 +95,7 @@
 					//alert(request.responseText);
 					var response = request.responseText;
 					if (response != 'error') {
-						var node = document.createElement("LI");
+						var node = document.createElement("P");
 						node.innerHTML = content;
 						list.insertBefore(node, list.childNodes[0]);
 						form.elements.namedItem("content").value = "";
