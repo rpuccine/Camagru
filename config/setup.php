@@ -1,5 +1,7 @@
 <?php
-	mkdir($_SERVER['DOCUMENT_ROOT']."/img");
+	if (!(file_exists($_SERVER['DOCUMENT_ROOT']."/img"))) {
+		mkdir($_SERVER['DOCUMENT_ROOT']."/img");
+	}
 	include("database.php");
 
 	try {

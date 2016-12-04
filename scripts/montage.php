@@ -13,11 +13,11 @@
 
 	// Page Protection
 	if (!isset($_POST['src_poney']) || !isset($_POST['login'])) {
-		echo ("Wrong Params Chien !");
+		echo ("error");
 		die;
 	}
 	if (!($user = User::get_user($_POST['login']))) {
-		echo ("Unknown User Chien !");
+		echo ("error");
 		die;
 	}
 
@@ -29,7 +29,7 @@
 	// Use the cam picture or uploaded file
 	if ($_FILES['file']['error'] == 0) {
 		if ($_FILES['file']['size'] > 2097152 || $_FILES['file']['type'] != 'image/png'){
-			echo "Image must be less than 2mo and be off type png";
+			echo ("error");
 			die;
 		}
 		copy($_FILES['file']['tmp_name'], $dst_file_system);
@@ -56,18 +56,18 @@
 	$dst_y = $dst_h / 2 - $src_h / 2;
 	// Do the copy
 	if (!imagecopy ($dst_img, $src_img, $dst_x, $dst_y, 0, 0, $src_w , $src_h)) {
-		echo ("Error in copy proccess...");
+		echo ("error");
 		die;
 	}
 	// Record le montage
 	if (!imagepng($dst_img, $dst_file_system)) {
-		echo ("Error in record montage...");
+		echo ("error");
 		die;
 	}
 
 	// Record the img in DB
 	if (!($montage = Montage::create($user->get_id(), $dst))) {
-		echo ("Error in DB process");
+		echo ("error");
 		die;
 	}
 

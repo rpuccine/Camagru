@@ -14,7 +14,7 @@
 				<img id="preview" src="">
 			</div>
 			<form enctype="multipart/form-data" method="post" id="montage_form">
-				<input type="file" name="file">
+				<input class="padSmall" type="file" name="file">
 				<br>
 				<img id="calc_1" src='/calc/beard_01.png'>
 				<input type="radio" name="calc" value="/calc/beard_01.png" required>
@@ -23,8 +23,11 @@
 				<img id="calc_3" src='/calc/beard_03.png'>
 				<input type="radio" name="calc" value="/calc/beard_03.png" required>
 				<br>
-				<input type="submit" value="Take Picture">
+				<input class="padSmall" type="submit" value="Take Picture">
 			</form>
+			<h1 class="padSmall" id="error" style="visibility:hidden">
+					Error, Reésayer.
+			</h1>
 		</div>
 		<div class="montage_main" id="side">
 			<div class="center title">
@@ -59,6 +62,7 @@
 			calc_1	     = document.querySelector('#calc_1'),
 			calc_2       = document.querySelector('#calc_2'),
 			calc_3       = document.querySelector('#calc_3'),
+			error        = document.querySelector('#error'),
 			calc         = form.elements['calc'],
       width = 320,
       height = 0;
@@ -146,6 +150,8 @@
 		var url = "/scripts/montage.php";
 		var login = '<?php echo $_SESSION['user']->get_user_name() ?>';
 
+		error.style.visibility = "hidden";
+
 		// var form_data = new FormData(document.forms.namedItem("montage_form"));
 		var form_data = new FormData(form);
 		form_data.append("src_poney", data);
@@ -157,12 +163,18 @@
 				//alert(request.responseText);
 				var node = document.createElement("LI");
 				var img = document.createElement("IMG");
-				img.src = request.responseText;
-				photo.setAttribute('src', request.responseText);
-				node.appendChild(img);
-				list.insertBefore(node, list.childNodes[0]);
-				form.reset();
+				var response = request.responseText;
+				if (response == "error") {
+					error.style.visibility = "visible";
+				}
+				else {
+					img.src = request.responseText;
+					photo.setAttribute('src', request.responseText);
+					node.appendChild(img);
+					list.insertBefore(node, list.childNodes[0]);
+				}
 				preview.src = "";
+				form.reset();
 			}
 		}
 
