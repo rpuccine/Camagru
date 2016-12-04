@@ -1,6 +1,7 @@
 <?php
 	include($_SERVER['DOCUMENT_ROOT'].'/scripts/tools.php');
 
+	$ok = false;
 	// Verif login
 	if (User::is_user_name_exist($_POST['login'])) {
 		$msg = "<p> Desole petit chat, ce nom d'utilisateur est deja pris :( <p>";
@@ -10,7 +11,7 @@
 		$msg = "<p> Desole petit chat, ce mail est incorrect :( <p>";
 	}
 	// Verif PWD
-	else if (!preg_match('@[0-9]@', $_POST['pwd']) || strlen($_POST['pwd']) >= 8) {
+	else if (!preg_match('@[0-9]@', $_POST['pwd']) || strlen($_POST['pwd']) < 8) {
 		$msg = "<p> Le mot de passe doit contenir au moins 8 characteres et un chiffre <p>";
 	}
 	else if ($_POST['pwd'] !== $_POST['cf_pwd']) {
@@ -26,6 +27,7 @@
 			if ($user->send_verif_mail()) {
 				$msg = "<p> Votre compte a bien ete cree.</p>".
 				"<p>Pour activer celui-ci, verifiez vos mail, un lien d'activation vous a ete envoye.</p>";
+				$ok = true;
 			}
 			else {
 				$msg = "<p> Votre compte a bien ete cree.</p>".
@@ -45,7 +47,11 @@
 		<h1><?php echo $msg ?></h1>
 	</div>
 	<div class="container center">
-		<a href="/index.php">Retour</a>
+		<?php if ($ok) { ?>
+			<a href="/index.php">Retour</a>
+		<?php } else { ?>
+			<a href="/pages/sign_up.php">Retour</a>
+		<?php } ?>
 	</div>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
 </body>
