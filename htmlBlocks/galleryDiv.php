@@ -6,23 +6,22 @@
     <img src=<?php echo($montage->get_src()) ?> alt="">
   </div>
   <div>
-    Likes : <?php echo($montage->get_likes()) ?>
+    Likes : <span id="like_<?php echo($montage->get_id()); ?>"><?php echo($montage->get_likes()) ?></span>
   </div>
-  <form action="/scripts/likeMontage.php" method="post">
+  <form class="form_like" method="post">
     <input type="hidden" name="id"
       value="<?php echo ($montage->get_id()) ?>">
       <input type="submit" value="like">
   </form>
-  <?php
-    foreach ($comments as $comment ) { ?>
-      <div class="galCmts">
-          <p>
-            <?php echo ($comment->get_content()) ?>
-          </p>
-      </div>
-    <?php } ?>
+  <div class="galCmts">
+    <ul id="list_comment_<?php echo($montage->get_id()); ?>">
+      <?php foreach ($comments as $comment ) { ?>
+        <li><?php echo ($comment->get_content()) ?></li>
+      <?php } ?>
+    </ul>
+  </div>
   <div>
-    <form action="/scripts/postComment.php" method="post">
+    <form class="form_comment" method="post">
       <input type="hidden" name="montage_id"
         value="<?php echo ($montage->get_id()) ?>">
       <input type="hidden" name="user_id"

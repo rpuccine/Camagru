@@ -168,7 +168,6 @@
 		request.send(form_data);
 	}
 
-  //startbutton.addEventListener('click', function(ev){
   form.addEventListener('submit', function(ev){
       takepicture();
     ev.preventDefault();

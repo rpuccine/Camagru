@@ -4,7 +4,8 @@
   $montage_id = $_POST['montage_id'];
   $content = $_POST['content'];
   if (!(Comment::post($montage_id, $content))) {
-    $msg = "error";
+    echo ("error");
+    exit();
   }
   else {
     $msg = "post sucess";
@@ -12,22 +13,16 @@
 
   if (!($user = User::get_user_by_id($_POST['user_id']))) {
     $msg2 = "User not find";
+    echo ("error");
+    exit();
   }
   else if (!($user->send_comment_notif_mail())) {
     $msg2 = "mail failed";
+    echo ("error");
+    exit();
   }
   else {
     $msg2 = "Mail send";
+    echo ("sucess");
   }
 ?>
-<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
-<body>
-	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
-	<div class="container">
-		<p><?php echo ($msg); ?></p>
-		<p><?php echo ($msg2); ?></p>
-	</div>
-  <a class="container center" href="/pages/gallery.php">Retour</a>
-	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>
-</body>
-</html>
