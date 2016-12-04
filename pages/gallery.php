@@ -49,6 +49,7 @@
 			var montage_id = this.elements.namedItem("id").value;
 			var span_id = "#like_" + montage_id;
 			var span = document.querySelector(span_id);
+			var button = document.querySelector("#submit_" + montage_id);
 			//  ajax var
 			var request = new XMLHttpRequest();
 			var url = "/scripts/likeMontage.php";
@@ -61,6 +62,7 @@
 					var response = request.responseText;
 					if (response != 'error') {
 						span.innerHTML = response;
+						button.disabled = true;
 					}
 					else {
 						alert("Error during like process");

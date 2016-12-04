@@ -11,7 +11,8 @@
   <form class="form_like" method="post">
     <input type="hidden" name="id"
       value="<?php echo ($montage->get_id()) ?>">
-      <input type="submit" value="like">
+      <input id="submit_<?php echo($montage->get_id()); ?>"
+        type="submit" value="like">
   </form>
   <div class="galCmts">
     <ul id="list_comment_<?php echo($montage->get_id()); ?>">
