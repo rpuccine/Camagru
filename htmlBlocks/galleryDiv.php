@@ -2,6 +2,11 @@
   $comments = Comment::get_comments_by_montage($montage->get_id());
 ?>
 <div class="gal center">
+  <div class="center padSmall">
+    <p>
+      <?php echo(user::get_user_by_id($montage->get_user_id())->get_user_name()) ?>
+    </p>
+  </div>
   <div class="galImg">
     <img src=<?php echo($montage->get_src()) ?> alt="">
   </div>

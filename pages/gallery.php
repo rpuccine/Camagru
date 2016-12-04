@@ -1,6 +1,6 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/scripts/tools.php') ?>
 <?php
-	$limit = 5;
+	$limit = 6;
 	$nb_montage = Montage::get_nb_montage();
 	$last_page = ceil($nb_montage / $limit);
 	if (!isset($_GET['page']) || $_GET['page'] < 1) {
