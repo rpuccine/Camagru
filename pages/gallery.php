@@ -1,6 +1,6 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/scripts/tools.php') ?>
 <?php
-	$limit = 5;
+	$limit = 6;
 	$nb_montage = Montage::get_nb_montage();
 	$last_page = ceil($nb_montage / $limit);
 	if (!isset($_GET['page']) || $_GET['page'] < 1) {
@@ -97,7 +97,7 @@
 					//alert(request.responseText);
 					var response = request.responseText;
 					if (response != 'error') {
-						var node = document.createElement("LI");
+						var node = document.createElement("P");
 						node.innerHTML = content;
 						list.insertBefore(node, list.childNodes[0]);
 						form.elements.namedItem("content").value = "";

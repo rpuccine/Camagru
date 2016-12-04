@@ -1,4 +1,4 @@
-<div class="page center">
+<div class=" container page center bgLight">
   <?php if ($page > 1) { ?>
     <a href='?page=<?php echo ($page - 1) ?>'>prev</a>
   <?php } ?>
