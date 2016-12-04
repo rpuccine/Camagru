@@ -36,7 +36,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="clear"/>
+	<div class="clear">
+	</div >
 	<canvas hidden id="canvas"></canvas>
 	<img hidden src="http://placekitten.com/g/320/261" id="photo" alt="photo">
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/footer.php') ?>

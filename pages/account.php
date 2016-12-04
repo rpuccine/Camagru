@@ -6,21 +6,25 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/head.php') ?>
 <body>
 	<?php include($_SERVER['DOCUMENT_ROOT'].'/htmlBlocks/header.php') ?>
-	<div class="container">
-		<h1>Account</h1>
-		<div class="padSmall">
-			<span>User Name : </span>
-			<span><?php echo $_SESSION['user']->get_user_name()?></span>
-			<a href="/pages/edit_user_name.php">Edit</a>
+	<div class="container center">
+		<div class="center title">
+		  <h1>Account</h1>
 		</div>
-		<div class="padSmall">
-			<span>Mail : </span>
-			<span><?php echo $_SESSION['user']->get_mail()?></span>
-			<a href="/pages/edit_mail.php">Edit</a>
-		</div>
-		<div class="padSmall">
-			<a href="/pages/edit_password.php">Edit Password</a>
-		</div>
+    <div class="center">
+      <div class="padSmall">
+  			<span>User Name : </span>
+  			<span><?php echo $_SESSION['user']->get_user_name()?></span>
+  			<a href="/pages/edit_user_name.php">Edit</a>
+  		</div>
+  		<div class="padSmall">
+  			<span>Mail : </span>
+  			<span><?php echo $_SESSION['user']->get_mail()?></span>
+  			<a href="/pages/edit_mail.php">Edit</a>
+  		</div>
+  		<div class="padSmall">
+  			<a href="/pages/edit_password.php">Edit Password</a>
+  		</div>
+    </div>
 		<div>
 			<?php
 	      foreach ($montages as $montage ) {
